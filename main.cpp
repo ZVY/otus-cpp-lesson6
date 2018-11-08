@@ -42,8 +42,9 @@ struct logging_allocator {
     }
 };
 
-int main(int, char *[]) {
-    //auto v = std::vector<int, logging_allocator<int>>{};
+int main(int, char *[]) 
+{
+    auto v = std::vector<int, logging_allocator<int>>{};
     //v.reserve(5);
     //for (size_t i = 0; i < 1 /* 5 */; ++i) {
     //    v.emplace_back(i);
