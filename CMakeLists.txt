@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(06.allocator)
+project(allocator VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 add_executable(allocator main.cpp)
 
