@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <map>
-
+#include <functional>
 
 template<typename T>
-struct logging_allocator {
+struct logging_allocator 
+{
     using value_type = T;
 
     using pointer = T*;
@@ -13,13 +14,14 @@ struct logging_allocator {
     using const_reference = const T&;
 
     template<typename U>
-    struct rebind {
-        using other = logging_allocator<U>;
+    struct rebind
+	{	
+		using other = logging_allocator<U>;
     };
 
     T *allocate(std::size_t n) {
         std::cout << __FUNCTION__ << "[n = " << n << "]" << std::endl;
-        auto p = std::malloc(n * sizeof(T));
+		auto p = std::malloc(n * sizeof(T));
         if (!p)
             throw std::bad_alloc();
         return reinterpret_cast<T *>(p);
@@ -44,23 +46,27 @@ struct logging_allocator {
 
 int main(int, char *[]) 
 {
-    auto v = std::vector<int, logging_allocator<int>>{};
-    //v.reserve(5);
-    //for (size_t i = 0; i < 1 /* 5 */; ++i) {
-    //    v.emplace_back(i);
-    //    std::cout << std::endl;
-    //}
+	//{
+	//	auto v = std::vector<int, logging_allocator<int>>{};
+	//	//v.reserve(2);
+	//	for (size_t i = 0; i < 2; ++i) {
+	//		v.emplace_back(i);
+	//		std::cout << std::endl;
+	//	}
 
-    /*for (auto i: v) {
-        std::cout << i << std::endl;
-    }*/
-/*
-    auto m = std::map<int, int, std::less<int>, logging_allocator<std::pair<const int, int>>>{};
-    for (size_t i = 0; i < 5; ++i) {
-        m[i] = i;
-        std::cout << std::endl;
-    }
-*/
+	//	for (auto i : v) {
+	//		std::cout << i << std::endl;
+	//	}
+	//}
+
+	{
+		auto m = std::map<int, int, std::less<int>, logging_allocator<std::pair<const int, int>>>{};
+		for (size_t i = 0; i < 5; ++i) {
+			m[i] = i;
+			std::cout << std::endl;
+		}
+	}
+
 
 	system("pause");
 
