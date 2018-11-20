@@ -25,7 +25,7 @@ int main(int, char *[])
 	}	
 		
 	{
-		auto mapCustom = std::map<int, int, std::less<int>, CustomAllocator<std::pair<const int, int>, (Numb+1)>>{};
+		auto mapCustom = std::map<int, int, std::less<int>, CustomAllocator<std::pair<const int, int>, (Numb)>>{};
 		for (size_t i = 0; i < Numb; ++i) {
 			mapCustom[i] = factor(i);
 			std::cout << i << " " << mapCustom[i] << std::endl;
