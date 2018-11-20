@@ -1,4 +1,6 @@
 #pragma once
+
+#include <algorithm>
 #include <array>
 
 template <typename T, size_t Size = 10>
