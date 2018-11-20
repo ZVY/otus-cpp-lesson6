@@ -6,7 +6,9 @@ class CustomAllocator
 {
 	public:
 		using value_type = T;
-		using pointer = T * ;
+		using pointer = T* ;
+		using reference = T&;
+		using const_reference = const T&;
 
 		template <class U>
 		struct rebind {
