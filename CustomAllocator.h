@@ -5,10 +5,13 @@ template <typename T, size_t Size = 10>
 class CustomAllocator
 {
 	public:
-		using value_type = T;
-		using pointer = T* ;
+	    using size_type = size_t;
+		using difference_type = ptrdiff_t;
+		using pointer = T*;
+		using const_pointer = const T*;
 		using reference = T&;
 		using const_reference = const T&;
+		using value_type = T;
 
 		template <class U>
 		struct rebind {
