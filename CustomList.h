@@ -13,10 +13,10 @@ class CustomList
 
 			T data;
 
-			Node* m_next;
+			Node *m_next;
 		};
 
-		Node* m_head;
+		Node *m_head;
 		using Alloc = typename _Alloc::template rebind<Node>::other;
 		Alloc allocList;
 
@@ -26,7 +26,7 @@ class CustomList
 		{			
 			while (m_head) {
 				
-				Node* newHead = m_head->m_next;
+				Node *newHead = m_head->m_next;
 			
 				allocList.destroy(m_head);
 				allocList.deallocate(m_head, 1);
@@ -87,14 +87,5 @@ class CustomList
 
 		Iterator end() const {
 			return Iterator(nullptr);
-		}
-
-		size_t size () const {
-			size_t s = 0;
-			for (Iterator it = begin(); it != end(); ++it) {
-				++s;
-			}
-
-			return s;
-		}	
+		}			
 };

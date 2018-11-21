@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <map>
 
 #include "CustomAllocator.h"
@@ -25,6 +24,7 @@ int main(int, char *[])
 	}	
 		
 	{
+		// for MSVS need Numb+1 (!)
 		auto mapCustom = std::map<int, int, std::less<int>, CustomAllocator<std::pair<const int, int>, (Numb)>>{};
 		for (size_t i = 0; i < Numb; ++i) {
 			mapCustom[i] = factor(i);
@@ -54,7 +54,7 @@ int main(int, char *[])
 			std::cout << *it << std::endl;
 	}
 			
-	system("pause");
+	//system("pause");
 
     return 0;
 }
