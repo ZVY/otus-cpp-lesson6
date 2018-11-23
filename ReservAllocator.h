@@ -4,7 +4,7 @@
 #include <array>
 
 template <typename T, size_t Size = 10>
-class CustomAllocator
+class ReservAllocator
 {
 	public:
 	    using size_type = size_t;
@@ -17,11 +17,11 @@ class CustomAllocator
 
 		template <class U>
 		struct rebind {
-			using other = CustomAllocator<U, Size>;
+			using other = ReservAllocator<U, Size>;
 		};
 
-		CustomAllocator() : index(0) {};
-		~CustomAllocator() = default;
+		ReservAllocator() : index(0) {};
+		~ReservAllocator() = default;
 
 		pointer allocate(std::size_t n)
 		{

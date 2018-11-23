@@ -3,7 +3,7 @@
 #include <memory>
 
 template<typename T, typename _Alloc = std::allocator<T>>
-class CustomList 
+class UnidirectLinkedList 
 {
 	private:
 		struct Node
@@ -17,23 +17,40 @@ class CustomList
 		};
 
 		Node *m_head;
+		int size = 0;
 		using Alloc = typename _Alloc::template rebind<Node>::other;
 		Alloc allocList;
 
 	public:	
-		CustomList() : m_head(nullptr) {}	
-		~CustomList()
-		{			
-			while (m_head) {
-				
-				Node *newHead = m_head->m_next;
-			
-				allocList.destroy(m_head);
-				allocList.deallocate(m_head, 1);
-				
-				m_head = newHead;	
+		UnidirectLinkedList() : m_head(nullptr) {}	
+		~UnidirectLinkedList()
+		{	
+			Node *curr = m_head;
+			for(int i = 0; i <= (size-1);)
+			{
+				if (i == (size - 1))
+				{
+					std::cout << "~" << curr->data << std::endl;
+					allocList.destroy(curr);
+					allocList.deallocate(curr, 1);
+					curr = m_head;
+					i = 0;
+					size--;					
+				}
+				else
+				{
+					++i;
+					curr = curr->m_next;
+				}			
 			}
-		}					
+		}		
+
+		//Node *newHead = m_head->m_next;
+
+		//allocList.destroy(m_head);
+		//allocList.deallocate(m_head, 1);
+
+		//m_head = newHead;	
 
 	public:
 		class Iterator
@@ -78,6 +95,9 @@ class CustomList
 			{				
 				node->m_next = m_head;
 				m_head = node;
+				size++;
+				std::cout << "+" << m_head->data << std::endl;
+
 			}
 		}	
 

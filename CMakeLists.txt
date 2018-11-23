@@ -4,7 +4,7 @@ project(allocator VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-add_executable(allocator main.cpp CustomAllocator.h CustomList.h)
+add_executable(allocator main.cpp ReservAllocator.h UnidirectLinkedList.h)
 
 set_target_properties(allocator PROPERTIES
 	CXX_STANDARD 14
