@@ -29,8 +29,7 @@ class UnidirectLinkedList
 			for(int i = 0; i <= (size-1);)
 			{
 				if (i == (size - 1))
-				{
-					std::cout << "~" << curr->data << std::endl;
+				{					
 					allocList.destroy(curr);
 					allocList.deallocate(curr, 1);
 					curr = m_head;
@@ -43,14 +42,7 @@ class UnidirectLinkedList
 					curr = curr->m_next;
 				}			
 			}
-		}		
-
-		//Node *newHead = m_head->m_next;
-
-		//allocList.destroy(m_head);
-		//allocList.deallocate(m_head, 1);
-
-		//m_head = newHead;	
+		}
 
 	public:
 		class Iterator
