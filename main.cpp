@@ -15,13 +15,13 @@ const int Numb = 10;
 
 int main(int, char *[]) 
 {
-	{
+	/*{
 		auto mapStandard = std::map<int, int>{};
 		for (size_t i = 0; i < Numb; ++i) {
 			mapStandard[i] = factor(i);
 			std::cout << i << " " << mapStandard[i] << std::endl;
 		}
-	}	
+	}	*/
 		
 	{
 		// for MSVS need Numb+1 (!)
@@ -32,7 +32,7 @@ int main(int, char *[])
 		}
 	}
 
-	{
+	/*{
 		UnidirectLinkedList<int> list;
 		for (int i = 0; i < Numb; ++i)
 		{
@@ -52,9 +52,9 @@ int main(int, char *[])
 
 		for (auto it = list.begin(); it != list.end(); ++it)
 			std::cout << *it << std::endl;
-	}
+	}*/
 			
-	//system("pause");
+	system("pause");
 
     return 0;
 }

@@ -87,9 +87,7 @@ class UnidirectLinkedList
 			{				
 				node->m_next = m_head;
 				m_head = node;
-				size++;
-				std::cout << "+" << m_head->data << std::endl;
-
+				size++;				
 			}
 		}	
 
