@@ -23,6 +23,9 @@ class UnidirectLinkedList
 
 	public:	
 		UnidirectLinkedList() : m_head(nullptr) {}	
+		UnidirectLinkedList(const UnidirectLinkedList&) = delete;
+		UnidirectLinkedList& operator=(const UnidirectLinkedList&) = delete;
+		
 		~UnidirectLinkedList()
 		{	
 			Node *curr = m_head;
