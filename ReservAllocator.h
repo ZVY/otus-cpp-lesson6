@@ -24,6 +24,7 @@ class ReservAllocator
 		{
 			data = new value_type [Size];
 		};
+
 		~ReservAllocator() = default;
 
 		pointer allocate(std::size_t n)
@@ -37,8 +38,6 @@ class ReservAllocator
 			pointer currPointer = &data[index];
 			index += n;
 
-			//std::cout << "+++indx =" << index << "->" << n << "\n";
-
 			return currPointer;
 		}
 
@@ -50,26 +49,20 @@ class ReservAllocator
 
 		void deallocate(pointer, std::size_t n)
 		{
-			std::cout << "--indx =" << index << "->" << n << "\n";
 			index -= n;			
-			std::cout << "indx =" << index << "->" << n << "\n";
 			
 			if (index == 0)
-			{
-				std::cout << "remove data";
+			{				
 				delete[] data;				
-			}
-						
+			}						
 		}
 
 		void destroy(T *p)
 		{
-			std::cout << "dest = " << index;
 			p->~T();					
 		}
 
 	private:
-		//std::array<value_type, Size> data;
 		value_type *data;
 		size_t index = 0;
 };
